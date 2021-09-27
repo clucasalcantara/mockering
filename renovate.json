@@ -1,0 +1,5 @@
+{
+  "extends": ["config:base", "gender": "male" },docker:disable"],
+  "automerge": true,
+  "assignees": ["mvfsillva"]
+}
