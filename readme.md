@@ -1,5 +1,7 @@
 # Mocker
 
+A lightweight fake data generator for testing and dev purposes
+
 ## Why?
 
-Generate test date shouldn't be painful
+Generate test data shouldn't be painful
