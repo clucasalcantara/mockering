@@ -23,50 +23,48 @@ const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-const language = (): ILanguage => {
-  const generateWords = ({ count = DEFAULT_WORDS_COUNT }: WordsConfigType = {}) => {
-    const word = []
+const generateWords = ({ count = DEFAULT_WORDS_COUNT }: WordsConfigType = {}) => {
+  const word = []
 
-    for (let i = 0; i < count; i++) {
-      word.push(words[Math.floor(Math.random() * words.length)])
+  for (let i = 0; i < count; i++) {
+    word.push(words[Math.floor(Math.random() * words.length)])
+  }
+
+  return word.join('')
+}
+
+const generateSentences = ({
+  lines = DEFAULT_PARAGRAPH_LENGTH,
+  wordCount = DEFAULT_SENTENCE_WORDS_COUNT,
+}: ParagraphConfigType = {}) => {
+  let paragraph: string[] = []
+
+  for (let i = 0; i < lines; i++) {
+    const sentence: string[] = []
+
+    for (let i = 0; i < wordCount; i++) {
+      const randomAccessor = Math.floor(Math.random() * words.length)
+      !sentence.includes(words[randomAccessor] as string) && sentence.push(words[randomAccessor] as string)
     }
 
-    return word.join('')
+    paragraph.push(sentence.join(' '))
   }
 
-  const generateSentences = ({
-    lines = DEFAULT_PARAGRAPH_LENGTH,
-    wordCount = DEFAULT_SENTENCE_WORDS_COUNT,
-  }: ParagraphConfigType = {}) => {
-    let paragraph: string[] = []
+  return capitalizeFirstLetter(`${paragraph.join(', ')}.`)
+}
 
-    for (let i = 0; i < lines; i++) {
-      const sentence: string[] = []
+const generateTitle = ({
+  lines = DEFAULT_PARAGRAPH_LENGTH,
+  wordCount = DEFAULT_SENTENCE_WORDS_COUNT,
+}: ParagraphConfigType = {}) => {
+  const title = generateSentences({ lines, wordCount })
+  return title.substring(0, title.length - 1)
+}
 
-      for (let i = 0; i < wordCount; i++) {
-        const randomAccessor = Math.floor(Math.random() * words.length)
-        !sentence.includes(words[randomAccessor] as string) && sentence.push(words[randomAccessor] as string)
-      }
-
-      paragraph.push(sentence.join(' '))
-    }
-
-    return capitalizeFirstLetter(`${paragraph.join(', ')}.`)
-  }
-
-  const generateTitle = ({
-    lines = DEFAULT_PARAGRAPH_LENGTH,
-    wordCount = DEFAULT_SENTENCE_WORDS_COUNT,
-  }: ParagraphConfigType = {}) => {
-    const title = generateSentences({ lines, wordCount })
-    return title.substring(0, title.length - 1)
-  }
-
-  return {
-    words: ({ count = DEFAULT_WORDS_COUNT }: WordsConfigType = {}) => generateWords({ count }),
-    paragraph: ({ lines = DEFAULT_PARAGRAPH_LENGTH }: ParagraphConfigType = {}) => generateSentences({ lines }),
-    title: () => generateTitle({ lines: 1, wordCount: 5 }),
-  }
+const language: ILanguage = {
+  words: ({ count = DEFAULT_WORDS_COUNT }: WordsConfigType = {}) => generateWords({ count }),
+  paragraph: ({ lines = DEFAULT_PARAGRAPH_LENGTH }: ParagraphConfigType = {}) => generateSentences({ lines }),
+  title: () => generateTitle({ lines: 1, wordCount: 5 }),
 }
 
 export default language
