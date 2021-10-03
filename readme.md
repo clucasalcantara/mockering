@@ -1,6 +1,6 @@
 # Mockering
 
-_NOTE_ This is a work in progress.
+_NOTE_ This is a work in progress 🚧
 
 A lightweight fake data generator for testing and dev purposes
 
@@ -8,7 +8,7 @@ A lightweight fake data generator for testing and dev purposes
 
 Generate test data shouldn't be painful
 
-## API
+## API 🚧
 
 - Person
 - Language
