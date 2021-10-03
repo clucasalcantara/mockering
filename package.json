@@ -1,5 +1,5 @@
 {
-  "name": "mocker",
+  "name": "mockering",
   "version": "0.1.0",
   "description": "A lightweight library to generate testing data",
   "author": "Caio Alcantara <alcantaracaiolucas@gmail.com>",
@@ -7,12 +7,12 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/clucasalcantara/mocker.git"
+    "url": "git+https://github.com/clucasalcantara/mockering.git"
   },
   "bugs": {
-    "url": "https://github.com/clucasalcantara/mocker/issues"
+    "url": "https://github.com/clucasalcantara/mockering/issues"
   },
-  "homepage": "https://github.com/clucasalcantara/mocker#readme",
+  "homepage": "https://github.com/clucasalcantara/mockering#readme",
   "keywords": [
     "faker",
     "mockdata",
